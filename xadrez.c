@@ -1,60 +1,86 @@
 #include <stdio.h>
 
+// =========================
+// TORRE - RECURSIVIDADE
+// =========================
+void moverTorre(int casas) {
+
+    if(casas == 0)
+        return;
+
+    printf("Direita\n");
+    moverTorre(casas - 1);
+}
+
+
+// =========================
+// RAINHA - RECURSIVIDADE
+// =========================
+void moverRainha(int casas) {
+
+    if(casas == 0)
+        return;
+
+    printf("Esquerda\n");
+    moverRainha(casas - 1);
+}
+
+
+// =========================
+// BISPO - RECURSIVIDADE
+// + LOOPS ANINHADOS
+// =========================
+void moverBispo(int casas) {
+
+    if(casas == 0)
+        return;
+
+    for(int vertical = 0; vertical < 1; vertical++) {
+
+        for(int horizontal = 0; horizontal < 1; horizontal++) {
+
+            printf("Cima Direita\n");
+
+        }
+    }
+
+    moverBispo(casas - 1);
+}
+
+
 int main() {
 
-    int i;
-
-    // =========================
-    // TORRE - FOR
-    // =========================
     printf("Movimento da Torre:\n");
-
-    for(i = 1; i <= 5; i++) {
-        printf("Direita\n");
-    }
+    moverTorre(5);
 
 
-    // =========================
-    // BISPO - WHILE
-    // =========================
     printf("\nMovimento do Bispo:\n");
-
-    i = 1;
-    while(i <= 5) {
-        printf("Cima Direita\n");
-        i++;
-    }
+    moverBispo(5);
 
 
-    // =========================
-    // RAINHA - DO WHILE
-    // =========================
     printf("\nMovimento da Rainha:\n");
-
-    i = 1;
-    do {
-        printf("Esquerda\n");
-        i++;
-    } while(i <= 8);
+    moverRainha(8);
 
 
     // =========================
-    // CAVALO - LOOPS ANINHADOS
+    // CAVALO - LOOPS COMPLEXOS
     // =========================
+
     printf("\nMovimento do Cavalo:\n");
 
-    int baixo = 2;
-    int esquerda = 1;
+    int vertical, horizontal;
 
-    for(i = 1; i <= baixo; i++) { // movimento vertical
-        printf("Baixo\n");
+    for(vertical = 1; vertical <= 2; vertical++) {
 
-        int j = 1;
+        printf("Cima\n");
 
-        while(j <= esquerda && i == baixo) { 
-            // só executa depois das duas casas para baixo
-            printf("Esquerda\n");
-            j++;
+        for(horizontal = 1; horizontal <= 1; horizontal++) {
+
+            if(vertical < 2)
+                continue;
+
+            printf("Direita\n");
+            break;
         }
     }
 
